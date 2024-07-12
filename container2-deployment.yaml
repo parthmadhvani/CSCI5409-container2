@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: container2
-        image: pmadhvani/k8con2:abcde 
+        image: us-central1-docker.pkg.dev/k8s-project-429019/k8-art-reg/container2:latest 
         imagePullPolicy: Always
         ports:
         - containerPort: 7000
