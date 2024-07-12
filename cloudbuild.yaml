@@ -9,7 +9,7 @@ steps:
       - '-c'
       - |
         echo "Trying to log into k8s."
-        gcloud container clusters get-credentials cluster-2 --zone us-central1-c --project k8s-project-429019
+        gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project k8s-project-429019
 
   - id: Build
     name: "gcr.io/cloud-builders/docker"
