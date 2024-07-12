@@ -38,6 +38,6 @@ steps:
       - "-c"
       - |
         echo "Updating pods..."
-        kubectl get deployment container2-deployment || kubectl apply -f container2-deployment.yaml
+        kubectl get deployment container2 || kubectl apply -f container2-deployment.yaml
         kubectl set image container2-deployment container2=us-central1-docker.pkg.dev/k8s-project-429019/k8-art-reg/container2:latest
         echo "Image updated successfully."
