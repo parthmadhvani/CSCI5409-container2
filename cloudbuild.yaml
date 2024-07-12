@@ -28,7 +28,7 @@ steps:
       - "-c"
       - |
         echo "Pushing Docker image..."
-        docker push --all-tags us-central1-docker.pkg.dev/k8s-project-429019/k8-art-reg
+        docker push --all-tags us-central1-docker.pkg.dev/k8s-project-429019/k8-art-reg/container2:latest
         echo "Pushed successfully."
 
   - id: Update GKE
