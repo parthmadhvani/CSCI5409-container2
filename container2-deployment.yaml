@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: container2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: container2
+  template:
+    metadata:
+      labels:
+        app: container2
+    spec:
+      containers:
+      - name: container2
+        image: pmadhvani/k8con2:abcde 
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7000
+        volumeMounts:
+        - mountPath: /parth_PV_dir
+          name: persistent-volume
+        env:
+        - name: PORT
+          value: "7000"
+        - name: FILE_DIR
+          value: "/parth_PV_dir"
+      volumes:
+      - name: persistent-volume
+        persistentVolumeClaim:
+          claimName: parth-pv-claim
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: container2-service
+spec:
+  selector:
+    app: container2
+  ports:
+    - protocol: TCP
+      port: 90
+      targetPort: 7000
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: parth-pv-claim
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
